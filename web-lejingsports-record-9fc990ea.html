@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐竞体育 · 简明导航</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f7f9fb;
+      color: #1e2a3a;
+      line-height: 1.7;
+    }
+
+    /* 顶部导航 — 深色 */
+    .top-bar {
+      background: #0f1923;
+      color: #e6edf5;
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    .top-bar .brand {
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.03em;
+      color: #bdd3e8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #b9cfdf;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* 深色头图 hero */
+    .hero {
+      background: #14222e;
+      color: #eef4fa;
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto 1rem;
+      font-size: 1rem;
+      opacity: 0.88;
+    }
+
+    .hero .sub {
+      font-size: 0.95rem;
+      opacity: 0.7;
+    }
+
+    /* 主要内容区（浅色正文） */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      border-left: 4px solid #2c7da0;
+      padding-left: 0.8rem;
+      color: #0f1d2b;
+    }
+
+    .intro-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem 2rem 1.8rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-card p {
+      margin-bottom: 1rem;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .text-link {
+      color: #1a6f8b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 0.15s;
+    }
+
+    .text-link:hover {
+      color: #083b4f;
+    }
+
+    /* 三个场景卡片 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.6rem 1.4rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eaeef3;
+    }
+
+    .scene-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0e1e2e;
+    }
+
+    .scene-card p {
+      font-size: 0.92rem;
+      color: #2c3f4f;
+    }
+
+    .scene-card .emoji-marker {
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+
+    /* 常见说明 / faq 摘要 */
+    .faq-block {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.6rem 2rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eaeef3;
+      margin-bottom: 2.5rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #0f1f2e;
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.98rem;
+    }
+
+    .faq-a {
+      color: #304456;
+      font-size: 0.92rem;
+    }
+
+    .hr-soft {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d3dfe9, transparent);
+      margin: 1.8rem 0;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+      font-size: 0.8rem;
+      color: #60778a;
+      border-top: 1px solid #e2eaf0;
+      margin-top: 0.5rem;
+    }
+
+    .footer-note a {
+      color: #386a7e;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.8rem 1.2rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .intro-card,
+      .faq-block {
+        padding: 1.5rem;
+      }
+
+      .scene-grid {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header class="top-bar">
+    <span class="brand">乐竞体育 · 简明指引</span>
+    <nav class="nav-links">
+      <a href="#guide">核心介绍</a>
+      <a href="#scenes">适用场景</a>
+      <a href="#faq">常见说明</a>
+    </nav>
+  </header>
+
+  <!-- 深色头图 -->
+  <section class="hero">
+    <h1>乐竞体育 · 轻量导航</h1>
+    <p>一份简明的使用说明与访问提醒，帮助你更快了解平台的结构与基本规则。</p>
+    <div class="sub">信息整理至公开资料 · 仅作介绍参考</div>
+  </section>
+
+  <!-- 正文区域 -->
+  <main class="container">
+
+    <!-- 核心介绍 + 链接 -->
+    <section id="guide" class="intro-card">
+      <h2 class="section-title">核心介绍</h2>
+      <p>
+        <a href="https://web-lejingsports.com" class="text-link">乐竞体育</a>
+        是一个以体育赛事数据与资讯为基础的服务平台，主要提供赛事查询、实时比分、选手信息以及相关数据统计。平台覆盖足球、篮球、网球、电竞等多个主流项目，页面采用清晰的分区布局，便于快速定位需要的内容。
+      </p>
+      <p>
+        如果你对某一项赛事的赛程、历史交锋或近期状态感兴趣，可以通过站内搜索或分类筛选缩小范围。平台不提供任何形式的赛事预测、投注引导或金融类服务，所有数据均来自公开源，仅用于信息展示。
+      </p>
+      <p>
+        建议在首次使用时花几分钟浏览各栏目结构，了解数据更新频率与标注方式。若遇到数据延迟或显示异常，可参考平台内的“帮助与说明”部分。
+      </p>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section id="scenes">
+      <h2 class="section-title">三个常见使用场景</h2>
+      <div class="scene-grid">
+        <div class="scene-card">
+          <h3><span class="emoji-marker">⚽</span> 赛程与结果快速查阅</h3>
+          <p>在比赛日查看即将开始的赛事列表，或回顾刚刚结束的对阵结果。按联赛、日期或队伍名称筛选，适用于日常快速核对赛程。</p>
+        </div>
+        <div class="scene-card">
+          <h3><span class="emoji-marker">📊</span> 数据统计与对比</h3>
+          <p>查看球队/选手的近期战绩、进球/得分分布、交锋记录等。数据以表格和简图呈现，适合赛前分析或赛后复盘使用。</p>
+        </div>
+        <div class="scene-card">
+          <h3><span class="emoji-marker">🔍</span> 信息查证与核对</h3>
+          <p>当你从其他渠道看到某条赛事信息时，可以在此交叉验证时间、比分或阵容。平台数据更新相对及时，可作为辅助参考。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <section id="faq" class="faq-block">
+      <h2 class="section-title">常见说明</h2>
+      <div class="faq-item">
+        <span class="faq-q">▸ 数据来源与更新频率？</span>
+        <div class="faq-a">数据主要从联盟官方及合作数据商获取，常规赛事通常在结束后 5～15 分钟内更新。杯赛或次级联赛可能稍有延迟。</div>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">▸ 是否需要注册账号？</span>
+        <div class="faq-a">浏览基础赛程、比分、排行榜等公开信息无需注册。部分个性化功能（如关注队伍、设置提醒）需创建免费账号。</div>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">▸ 移动端适配情况如何？</span>
+        <div class="faq-a">页面采用响应式布局，在手机和平板设备上可正常浏览核心内容。部分复杂表格建议横屏查看以获得更佳体验。</div>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">▸ 遇到数据错误或链接失效怎么办？</span>
+        <div class="faq-a">可通过站内“意见反馈”通道提交问题，或参考说明页中的联系方式（处理时间通常为 1～3 个工作日）。</div>
+      </div>
+    </section>
+
+    <hr class="hr-soft">
+
+    <!-- 提醒段落（自然嵌入） -->
+    <div style="background: #ffffff; border-radius: 16px; padding: 1.6rem 2rem; border: 1px solid #eaeef3;">
+      <p style="margin-bottom: 0.3rem; font-weight: 500; color: #0f1e2e;">访问提醒</p>
+      <p style="font-size: 0.93rem; color: #2f4355;">
+        请确保使用最新版浏览器访问 <a href="https://web-lejingsports.com" class="text-link">乐竞体育</a>，以获得完整样式与交互体验。部分旧版浏览器可能导致布局错位或按钮失效。建议在稳定的网络环境下浏览，避免因页面资源加载不完全而遗漏信息。
+      </p>
+      <p style="font-size: 0.93rem; color: #2f4355; margin-top: 0.6rem;">
+        另外，本介绍页仅对平台功能与使用做客观说明，不构成任何建议或担保。所有操作请以实际页面为准。
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="footer-note">
+    <p>内容仅供参考 · 数据来源以平台实际展示为准</p>
+    <p style="margin-top: 0.2rem;">
+      <a href="https://web-lejingsports.com">乐竞体育</a> — 信息导航页
+    </p>
+  </footer>
+
+</body>
+</html>
