@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fa;
+            color: #1f2a3a;
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(145deg, #11212e 0%, #1b2d41 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            color: #e7edf3;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero h1 span {
+            font-weight: 600;
+            color: #b8d8ff;
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #c6d6e8;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* 正文区浅色卡片层叠感 */
+        .section-card {
+            background: white;
+            border-radius: 28px;
+            padding: 2.8rem 2.5rem;
+            margin: -1.8rem auto 2.5rem;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.02);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-card p {
+            margin: 1.2rem 0;
+        }
+
+        .section-card p:first-child {
+            margin-top: 0;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.2rem;
+            margin: 1.8rem 0;
+        }
+
+        .highlight-item {
+            background: #f8faff;
+            padding: 1.6rem 1.8rem;
+            border-radius: 20px;
+            border-left: 4px solid #2b6c9e;
+            transition: all 0.15s ease;
+        }
+
+        .highlight-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1b3b57;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.3px;
+        }
+
+        .highlight-item p {
+            margin: 0.2rem 0 0;
+            color: #3d4e63;
+            font-size: 0.97rem;
+        }
+
+        .badge-light {
+            display: inline-block;
+            background: #e5edf5;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #1f4b72;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+        }
+
+        .usage-note {
+            background: #f0f4fc;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin: 2rem 0 0;
+        }
+
+        .usage-note h4 {
+            font-weight: 500;
+            color: #16344d;
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .usage-note ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .usage-note li {
+            padding: 0.35rem 0 0.35rem 1.6rem;
+            position: relative;
+            color: #2a4055;
+        }
+
+        .usage-note li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2b6c9e;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e1e8f0;
+        }
+
+        .faq-mini-item {
+            flex: 1 1 180px;
+        }
+
+        .faq-mini-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1f3d58;
+            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini-item span {
+            color: #4a6078;
+            font-size: 0.92rem;
+        }
+
+        .inline-link {
+            color: #1d6fa5;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #1d6fa5;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 2.5rem 2rem 3.8rem;
+            color: #6f7e93;
+            font-size: 0.85rem;
+            border-top: 1px solid #e1e8f0;
+            margin-top: 0.5rem;
+        }
+
+        .footer-note a {
+            color: #2b6c9e;
+            text-decoration: none;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 720px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-card {
+                padding: 2rem 1.4rem;
+                margin-left: 0.6rem;
+                margin-right: 0.6rem;
+                border-radius: 20px;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .usage-note {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .hero {
+                padding: 3rem 1.2rem 2.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .highlight-item {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>关于 <span>爱游戏</span></h1>
+    <p>一个围绕休闲与探索而呈现的线上角落，没有喧哗，只保留内容本身的分量。</p>
+</section>
+
+<div class="container">
+    <div class="section-card">
+        <p style="font-size: 1.05rem;">
+            在互联网的众多页面中，<a href="https://sitesport-igame.com" class="inline-link">爱游戏</a> 
+            提供的是另一种节奏——它不追求让访问者立刻做出决定，而是先让人看见内容。
+            这里收集了一些经过筛选的游戏相关信息和思路，适合那些愿意花几分钟慢慢浏览的人。
+        </p>
+
+        <div class="grid-2col">
+            <div class="highlight-item">
+                <div class="badge-light">内容聚焦</div>
+                <h3>主题清晰，不堆砌</h3>
+                <p>每一个栏目都有明确的叙述方向，不刻意填充页面。信息密度适中，段落之间留有呼吸感。</p>
+            </div>
+            <div class="highlight-item">
+                <div class="badge-light">视觉温和</div>
+                <h3>深色开始，浅色承接</h3>
+                <p>头图的深色形成一种沉静的入口感，进入正文后转为浅色背景，阅读视线自然过渡。</p>
+            </div>
+            <div class="highlight-item">
+                <div class="badge-light">结构克制</div>
+                <h3>不设弹窗与强制动作</h3>
+                <p>页面以展示和说明为主，没有自动播放、弹窗或催促类元素，把选择权交给浏览者。</p>
+            </div>
+            <div class="highlight-item">
+                <div class="badge-light">场景兼容</div>
+                <h3>电脑与手机均可阅读</h3>
+                <p>排版针对不同宽度进行了适配，无论是笔记本还是手机屏幕，文字段落都保持易读性。</p>
+            </div>
+        </div>
+
+        <div class="usage-note">
+            <h4>常见的使用思路</h4>
+            <ul>
+                <li>如果你正在寻找某个游戏类型的介绍或背景资料，可以先从首页的分类索引开始。</li>
+                <li>页面内容以静态信息为主，适合作为查证或消遣阅读，不需要频繁刷新或等待加载。</li>
+                <li>部分页面会附带简单的说明或提示，帮助第一次访问的人快速了解结构。</li>
+            </ul>
+        </div>
+
+        <!-- FAQ 摘要 (自然风格) -->
+        <div class="faq-mini">
+            <div class="faq-mini-item">
+                <strong>内容更新频率？</strong>
+                <span>按主题逐步补充，不追求日更，更注重内容本身的准确性。</span>
+            </div>
+            <div class="faq-mini-item">
+                <strong>是否需要注册？</strong>
+                <span>目前浏览所有页面都不需要账户或登录，直接打开即可阅读。</span>
+            </div>
+            <div class="faq-mini-item">
+                <strong>移动端体验如何？</strong>
+                <span>按钮和链接区域做了触控适配，字号在手机上也会相应调整。</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-note">
+    本文档为产品方向说明，主要内容源自 <a href="https://sitesport-igame.com">爱游戏</a> 的定位与结构。<br>
+    页面不收集个人数据，仅作信息展示用途。
+</div>
+
+</body>
+</html>
