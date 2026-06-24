@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>爱游戏 · 专题介绍</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f4f2ed;
+            color: #1e1d1b;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ---------- 深色头图 ---------- */
+        .hero {
+            background: linear-gradient(145deg, #1e2a2f 0%, #0f181c 100%);
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 40%, rgba(200, 230, 240, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 450;
+            letter-spacing: 0.06em;
+            color: #e5eae8;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #b0bfc0;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+            max-width: 550px;
+            margin: 0.5rem auto 0;
+            border-top: 1px solid rgba(200, 215, 215, 0.2);
+            padding-top: 1rem;
+        }
+
+        /* ---------- 浅色正文区域 ---------- */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2.4rem 1.5rem 3rem;
+            background-color: #fcfaf7;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        /* 三段自然介绍：杂志风格 */
+        .intro-block {
+            margin-bottom: 2.8rem;
+        }
+
+        .intro-block:last-of-type {
+            margin-bottom: 2rem;
+        }
+
+        .intro-block h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1f2b2c;
+            margin-bottom: 0.75rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid #c7905c;
+            letter-spacing: 0.02em;
+        }
+
+        .intro-block p {
+            font-size: 1rem;
+            color: #2f2e2a;
+            margin-bottom: 0.9rem;
+            text-align: justify;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 强调色用于链接 */
+        a {
+            color: #b87333;
+            text-decoration: none;
+            font-weight: 470;
+            transition: color 0.2s, border-bottom 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover, a:focus {
+            color: #7a4f22;
+            border-bottom: 1px solid #b87333;
+            outline: none;
+        }
+
+        .emph-link {
+            display: inline-block;
+            background: #f2ede4;
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+        }
+
+        /* 背景说明卡片（斜体区域） */
+        .context-card {
+            background-color: #f5f0ea;
+            border-radius: 10px;
+            padding: 1.6rem 1.8rem;
+            margin: 2.2rem 0 2.8rem;
+            border-left: 6px solid #cb9e73;
+            color: #2b2b27;
+            font-style: normal;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .context-card .lead {
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            color: #4d453b;
+            margin-bottom: 0.9rem;
+            font-style: italic;
+        }
+
+        .context-card p {
+            margin-bottom: 0.6rem;
+            text-align: left;
+        }
+
+        .context-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点——简洁摘要块 */
+        .feature-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 1.8rem;
+            margin: 1.8rem 0 2rem;
+            padding: 0.2rem 0;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            padding: 0 0 0.4rem;
+            border-bottom: 1px dashed #d5cfc5;
+        }
+
+        .feature-item span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2f3d3b;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-item small {
+            font-size: 0.85rem;
+            color: #6a6056;
+            line-height: 1.4;
+        }
+
+        /* 页尾访问提示 */
+        .site-footer {
+            margin-top: auto;
+            background-color: #1e2a2f;
+            color: #cedad9;
+            text-align: center;
+            padding: 1.2rem 1rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            border-top: 2px solid #36474b;
+        }
+
+        .site-footer a {
+            color: #d5b48c;
+            border-bottom: 1px solid #6a5a45;
+        }
+
+        .site-footer a:hover {
+            color: #e7d3b8;
+            border-bottom-color: #cb9e73;
+        }
+
+        .site-footer .note {
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            color: #7f9293;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 2.8rem 1rem 2.4rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .container {
+                padding: 1.8rem 1rem 2.2rem;
+            }
+            .context-card {
+                padding: 1.2rem 1.2rem;
+                margin-left: -0.2rem;
+                margin-right: -0.2rem;
+            }
+            .feature-item {
+                flex: 1 1 140px;
+            }
+            .intro-block h2 {
+                font-size: 1.15rem;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .container {
+                padding: 3rem 2.5rem 3.5rem;
+            }
+        }
+
+        /* 辅助视觉 */
+        .quiet-break {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d6cec2, transparent);
+            margin: 0.6rem 0 1.8rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>爱游戏 · 专题</h1>
+        <div class="sub">从一次访问开始，重新理解一个站点的用途</div>
+    </header>
+
+    <!-- 浅色正文区 -->
+    <main class="container">
+        <!-- 第一段：快速识别网站用途 -->
+        <section class="intro-block">
+            <h2>识别一个站点的意图</h2>
+            <p>
+                打开一个陌生的链接，用户最先想确认的往往是：这个网站是做什么的？它是否与自己的兴趣或需求有关？
+                <a href="https://siteportal-igame.com">爱游戏</a> 正是这样一个让人愿意稍作停留、快速判断价值的平台——它不追求花哨的包装，而是用简洁的入口和清晰的内容分区，让访客在几秒内就能了解核心方向。
+            </p>
+            <p>
+                无论你是游戏爱好者、内容创作者，还是只对特定领域抱有好奇，这类站点往往能通过整洁的导航与平实的介绍，降低理解门槛。它不试图用复杂的术语征服你，而是让你自己决定下一步。
+            </p>
+        </section>
+
+        <!-- 背景说明（卡片） -->
+        <div class="context-card">
+            <div class="lead">—— 一点背景 ——</div>
+            <p>
+                从用户视角看，一个网站的价值常常在于：它能否在最短时间内回答“我为什么来这里”。   
+            </p>
+            <p>
+                <a href="https://siteportal-igame.com">爱游戏</a> 在设计上偏向于“信息聚合与引导”：首页不堆砌无关元素，而是以条目、分类和简洁介绍作为主要线索。这有点像一本杂志的目录——你先看到标题，再决定是否深入。
+            </p>
+            <p>
+                媒介环境在变化，但用户对“快速确认”的需求始终未变。一个直白的站点，往往比精心包装却不知所云的页面更能留住人。
+            </p>
+        </div>
+
+        <!-- 第二段：特点（自然融入） -->
+        <section class="intro-block">
+            <h2>特点与场景</h2>
+            <p>
+                如果一个平台希望让不同类型的人都能找到自己关心的内容，它往往需要具备几个特征：清晰的层级、克制的视觉、以及有意义的链接引导。  
+                <a href="https://siteportal-igame.com">爱游戏</a> 在这一点上做得比较踏实——它的页面没有过度设计，但每个区块都在传递自己的用途。
+            </p>
+            <div class="feature-cluster">
+                <div class="feature-item">
+                    <span>简洁索引</span>
+                    <small>分类明确，不靠堆砌信息来制造充实感</small>
+                </div>
+                <div class="feature-item">
+                    <span>低认知负荷</span>
+                    <small>色调与版式温和，阅读节奏由用户掌握</small>
+                </div>
+                <div class="feature-item">
+                    <span>自然跳转</span>
+                    <small>链接嵌入句子，不打断浏览思路</small>
+                </div>
+            </div>
+            <p>
+                使用场景也相对宽泛：你可能是随手翻阅，也可能带着具体目标——无论是哪种状态，页面都不会过度干扰你的注意力。你可以很快找到感兴趣的区块，或者直接关闭，整个过程没有负担。
+            </p>
+        </section>
+
+        <!-- 小分隔（视觉节奏） -->
+        <div class="quiet-break"></div>
+
+        <!-- 第三段：从叙述回归理性 -->
+        <section class="intro-block">
+            <h2>一点总结</h2>
+            <p>
+                一个网站是否“有用”，很大程度上取决于它是否尊重用户的判断力。与其用夸大的口号吸引点击，不如让页面本身成为一张清晰的名片。
+            </p>
+            <p>
+                如果你正在寻找一个信息组织相对清爽、不刻意制造焦虑的站点，不妨自己去看看 <a href="https://siteportal-igame.com">爱游戏</a>。它或许不会立刻让你惊艳，但那种“刚好找到需要的东西”的感觉，才是大多数时候我们真正在意的。
+            </p>
+        </section>
+
+        <!-- 页内小提示（非链接） -->
+        <p style="font-size: 0.85rem; color: #7d746a; margin-top: 0.5rem; border-top: 1px solid #e6ddd2; padding-top: 1rem;">
+            * 以上内容基于网站首页结构与一般用户视角展开，不构成功能承诺。
+        </p>
+    </main>
+
+    <!-- 页尾访问提示（包含链接） -->
+    <footer class="site-footer">
+        <span>若你感兴趣，不妨直接前往 <a href="https://siteportal-igame.com">爱游戏</a> 一探究竟。</span>
+        <span class="note">—— 杂志专题 · 从识别到理解 ——</span>
+    </footer>
+
+</body>
+</html>
