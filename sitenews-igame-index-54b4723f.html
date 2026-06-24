@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 故事与入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf8f3;
+            font-family: 'Georgia', 'Times New Roman', 'Songti SC', serif;
+            color: #3e3a35;
+            line-height: 1.8;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .page-wrap {
+            max-width: 820px;
+            width: 100%;
+            background: #fffcf7;
+            padding: 2.8rem 2.4rem;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        /* 开场短句 */
+        .opening-line {
+            font-size: 1.4rem;
+            letter-spacing: 0.02em;
+            font-weight: 400;
+            color: #6f5e4b;
+            margin-bottom: 1.6rem;
+            border-left: 4px solid #dac9b5;
+            padding-left: 1.2rem;
+            font-style: italic;
+        }
+
+        .opening-line::before {
+            content: "❝ ";
+            font-size: 1.6rem;
+            color: #b7a48b;
+        }
+
+        .opening-line::after {
+            content: " ❞";
+            font-size: 1.6rem;
+            color: #b7a48b;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 450;
+            margin: 1.8rem 0 0.2rem 0;
+            color: #3d352b;
+            letter-spacing: 1px;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #8a7b6a;
+            border-bottom: 1px solid #ede5d9;
+            padding-bottom: 1.2rem;
+            margin-bottom: 2rem;
+            font-style: normal;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+
+        /* 承接段落 */
+        .story-content p {
+            margin-bottom: 1.6rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .story-content a {
+            color: #6f583f;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbbaa8;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 400;
+        }
+
+        .story-content a:hover {
+            color: #a17f60;
+            border-bottom: 1px solid #a17f60;
+        }
+
+        /* 特点列表 温和卡片式 */
+        .feature-list {
+            background: #f5efe8;
+            padding: 1.8rem 2rem 1.2rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0 2.2rem 0;
+            box-shadow: inset 0 0 0 1px rgba(230, 218, 202, 0.5);
+        }
+
+        .feature-list h2 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.6px;
+            color: #5b4e3e;
+            margin-bottom: 1.2rem;
+            border-left: 2px solid #cbb59e;
+            padding-left: 0.9rem;
+        }
+
+        .feature-list ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .feature-list li {
+            padding: 0.6rem 0.6rem 0.6rem 1.8rem;
+            background: transparent;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #3f3830;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #b29e86;
+            font-weight: bold;
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .feature-list li strong {
+            font-weight: 500;
+            color: #5c4c39;
+        }
+
+        /* 温和提示 / 引用块 */
+        .gentle-note {
+            background: #f2ede4;
+            border-radius: 24px;
+            padding: 1.6rem 2rem;
+            margin: 2rem 0 1.8rem 0;
+            border-left: 5px solid #cfbea9;
+            font-size: 0.98rem;
+            color: #4e443b;
+            line-height: 1.8;
+        }
+
+        .gentle-note::before {
+            content: "☕ ";
+            font-size: 1.2rem;
+        }
+
+        /* 类似 FAQ 摘要的温和问答 */
+        .faq-mini {
+            border-top: 1px solid #e5dbcf;
+            margin-top: 2.2rem;
+            padding-top: 1.8rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.6rem;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #5e4f3d;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .faq-item .q::before {
+            content: "▸ ";
+            color: #b7a084;
+        }
+
+        .faq-item .a {
+            padding-left: 1.2rem;
+            color: #4f463c;
+            font-size: 0.95rem;
+            border-left: 2px solid #e3d6c6;
+            margin-top: 0.2rem;
+        }
+
+        .faq-item .a a {
+            color: #7a664f;
+            text-decoration: none;
+            border-bottom: 1px dotted #c7b5a0;
+        }
+
+        .faq-item .a a:hover {
+            border-bottom: 1px solid #9a846b;
+        }
+
+        /* 温和结尾 */
+        .closing {
+            margin-top: 2.8rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #e7ddd1;
+            color: #62584b;
+            font-size: 0.96rem;
+            text-align: right;
+            letter-spacing: 0.2px;
+        }
+
+        .closing i {
+            font-style: italic;
+            color: #857563;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .page-wrap {
+                padding: 1.8rem 1.2rem;
+                border-radius: 18px;
+            }
+            .opening-line {
+                font-size: 1.1rem;
+                padding-left: 0.8rem;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            .feature-list {
+                padding: 1.2rem 1rem;
+            }
+            .feature-list ul {
+                gap: 0.6rem;
+            }
+            .gentle-note {
+                padding: 1.2rem 1.2rem;
+            }
+            .faq-mini {
+                padding-top: 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .opening-line::before,
+            .opening-line::after {
+                content: "";
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 开场短句 -->
+    <div class="opening-line">
+        一段轻盈的路，从遇见开始。
+    </div>
+
+    <!-- 标题 + 副标题 -->
+    <h1>爱游戏</h1>
+    <div class="subhead">一个安静而稳定的故事入口</div>
+
+    <!-- 承接段落：从稳定入口和页面说明角度展开 -->
+    <div class="story-content">
+        <p>
+            在浏览器的地址栏中输入一行熟悉的字符，便抵达一处没有嘈杂转场的角落。
+            <a href="https://sitenews-igame.com">爱游戏</a> 正是这样一个地方——它不急于展示什么，只是静静地提供一种浏览的可能。你可以随时回来，页面依旧如初，节奏由你决定。
+        </p>
+        <p>
+            这里没有跳闪的弹窗，也没有催促的声音。那些在信息洪流中难得保留下来的稳定感，反而成了最珍贵的底色。许多习惯每日停留片刻的人说，他们喜欢这种“不必解释”的从容——就像走进一家光线柔和的小书店，店员只是微笑点头，把时间交还给你。
+        </p>
+    </div>
+
+    <!-- 特点列表 (温和卡片) -->
+    <div class="feature-list">
+        <h2>一些安静的特质</h2>
+        <ul>
+            <li><strong>结构清晰</strong> —— 分类与导航都经过简化，你总能找到想要的内容板块，无需反复翻找。</li>
+            <li><strong>加载轻快</strong> —— 没有沉重的装饰元素，页面响应迅速，即便在较慢的网络下也十分友好。</li>
+            <li><strong>持续更新</strong> —— 内容保持着稳定的节奏更新，但从不为了数量而牺牲可读性与连贯性。</li>
+            <li><strong>无冗余干扰</strong> —— 没有自动播放的视频或闪烁的广告，阅读体验接近纸质刊物。</li>
+        </ul>
+    </div>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="gentle-note">
+        如果你也是那种喜欢慢慢逛、偶尔停下来思考的人，不妨把这里当作一个日常的歇脚处。
+        每次打开，都是一次与自己节奏的温和重逢。
+    </div>
+
+    <!-- FAQ 摘要风格（温和问答，增加深度） -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">这个网站适合谁？</div>
+            <div class="a">任何希望在一个稳定、不浮躁的页面里浏览内容的人。没有年龄或偏好的限制，只要你对有条理的信息抱有耐心。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">我需要注册或登录吗？</div>
+            <div class="a">完全不需要。<a href="https://sitenews-igame.com">爱游戏</a> 始终以访客身份提供阅读体验，没有强制注册或付费门槛。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">内容更新频率如何？</div>
+            <div class="a">保持一种“细水长流”的节奏，不追求日更，但每次更新都经过斟酌。你可以在任何一天回来，总能发现一些新东西，又不至于感到信息过载。</div>
+        </div>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        <i>—— 故事不需要喧哗，只需要一个稳定的入口，和愿意走近的人。</i>
+    </div>
+</div>
+</body>
+</html>
